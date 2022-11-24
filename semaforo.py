@@ -1,4 +1,11 @@
-#SÓ TEM AS FUNÇÕES DE FILAS 
+#Funções para fila ----> Ok
+#Thread
+#Semaforo
+
+#Depois adicionar os extras...(:
+
+
+
 import threading
 import time
 from random import randint
