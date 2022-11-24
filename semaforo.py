@@ -15,29 +15,21 @@ def criar_fila(): #Criando a fila com as 10 posições iniciais
     while x < tamanho_fila:
         fila.append(randint(0, valor_maximo_fila))
         x += 1
-    #print(fila)
-    
-def retira_primeiro_elemento_da_fila(): #Retirando o primeiro elemento da fila...
-    fila.pop(0)
-    #print(fila)
+    print(f"Fila inicialmente --> {fila}")
 
-def poe_elemento_no_fim_da_fila(): #Adiconando elemento no final da fila...
-    fila.append(randint(0, valor_maximo_fila))
-    #print(fila)
+def exibir_fila(velho, novo, fila):
+    print(f"Thread ---,  tira {velho},  poe {novo},  fila: {fila}")
 
-def exibir_fila():
-    print("Fila: ", fila)
-    
 def operacao():
-    #while (i):
-    velho = retira_primeiro_elemento_da_fila() #O que foi retirado
-    novo = poe_elemento_no_fim_da_fila()
-    
+    velho = fila.pop(0) #Retirando o primeiro elemento da fila...
+    novo = randint(0, valor_maximo_fila)
+    fila.append(novo) #Adiconando elemento no final da fila...
+        
     print("Número retirado: ", velho)
     print("Número adicionado: ", novo)
     
-    retira_primeiro_elemento_da_fila()
-    poe_elemento_no_fim_da_fila()
+    exibir_fila(velho, novo, fila)
+    
     #print(fila)    
         
 def mostrar():
@@ -57,11 +49,9 @@ if __name__=="__main__":
     t2.join()
     
     criar_fila()
-    exibir_fila()
-    retira_primeiro_elemento_da_fila()
-    poe_elemento_no_fim_da_fila()
-    print("OPERAÇÂO")
+    print("Depois da --> OPERAÇÂO")
     operacao()
-    exibir_fila()
+   
     
+
     
