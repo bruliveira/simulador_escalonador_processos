@@ -9,8 +9,10 @@ import time
 from random import randint
 
 valor_maximo_fila = 100
+quatidade_teste = 2
 tamanho_fila = 10
 fila = []
+
 
 semaforo = threading.Semaphore(2) #Definindo a quantidade de Threads
 
@@ -38,13 +40,20 @@ def operacao():
 '''
 
 def operacao():
-    time.sleep(randint(0,10))
+    x = 0
     
-    velho = fila.pop(0) #Retirando o primeiro elemento da fila...
-    novo = randint(0, valor_maximo_fila)
-    fila.append(novo) #Adiconando elemento no final da fila...
-
-    print(f"Thread {threading.currentThread().getName()},  tira {velho},  poe {novo},  fila: {fila}") 
+    while x < quatidade_teste:
+        print('Iniciou: ' + threading.currentThread().getName())
+        time.sleep(randint(0,10))
+        velho = fila.pop(0) #Retirando o primeiro elemento da fila...
+        novo = randint(0, valor_maximo_fila)
+        fila.append(novo) #Adiconando elemento no final da fila...
+        print('Terminou: ' + threading.currentThread().getName())
+        print(f"-> Thread {threading.currentThread().getName()},\ttira {velho},\tpoe {novo},\t\tfila: {fila}")
+        x += 1
+    
+    
+    
     
     '''
     - são algumas coisas durante o teste, deixar aqui, caso precise
