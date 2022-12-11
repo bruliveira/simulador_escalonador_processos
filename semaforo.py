@@ -30,14 +30,12 @@ def operacao(quantidade_thread):
 #execução da operação sequencial
 def sequencial_executar():
     quantidade_thread = 1
-    print(f"\n--> Criando a fila com, as 10 posições <--")
-    criar_fila()
     
     while(sum(tempo_lista) < 1):
         operacao(quantidade_thread)
         quantidade_thread = quantidade_thread + 1
         
-    #print("Tempo total: ", sum(tempo_lista))   
+    print("Tempo total: ", sum(tempo_lista))   
   
     inser_segundos = quantidade_thread
     print("\nSem semaforo: Número de inserções por segundos: ", inser_segundos)
@@ -45,7 +43,6 @@ def sequencial_executar():
 #Função com semaforo
 def sema(quantidade_thread):
     tempo_inicio = time.time()
-    
     semaphore.acquire()
     
     velho = fila.get()
@@ -55,7 +52,6 @@ def sema(quantidade_thread):
     print(f"Thread {quantidade_thread},  tira {velho},  poe {novo},  fila: {fila.queue}")
 
     semaphore.release()
-    
     tempo_fim = time.time()
     tempo_lista.append((tempo_fim - tempo_inicio))
 
@@ -70,8 +66,8 @@ def semaforo_executar():
         th[quantidade_thread].start()
         th[quantidade_thread].join()
         quantidade_thread = quantidade_thread + 1
-        #print(f"tempo:{ sum(tempo_lista):.2f} ")
-        
+    
+    print("Semáforo - Tempo total: ", sum(tempo_lista))     
     inser_segundos = quantidade_thread
     print("\nCom semaforo: Número de inserções por segundos: ", inser_segundos)
     
@@ -80,5 +76,5 @@ if __name__=="__main__":
     criar_fila()
     
     #semaforo_executar()
-    #sequencial_executar()
+    sequencial_executar()
     
