@@ -17,9 +17,9 @@ if __name__=="__main__":
 
     maior_qtd = sem_semaforo[1] - com_semaforo[1] #verificando qtd de inserções de cada método
 
-    if maior_qtd > 0: #caso tenha mais inserção no sequencial do que o cooncorrente
-        eficiencia = (sem_semaforo[1] / com_semaforo[1]) * 100
+    if maior_qtd > 0: #caso tenha mais inserção no sequencial do que o concorrente
+        eficiencia = (maior_qtd/com_semaforo[1])*100 #variação percentual entre os valores
         print("O modelo sequencial é {0:.2f}% mais eficiente que o concorrente.\n".format(eficiencia))
     else: #caso contrário
-        eficiencia = (com_semaforo[1] / sem_semaforo[1]) * 100
+        eficiencia = (maior_qtd * (-1) / sem_semaforo[1])*100
         print("O modelo concorrente é {0:.2f}% mais eficiente que o sequencial.\n".format(eficiencia))

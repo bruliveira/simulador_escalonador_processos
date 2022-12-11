@@ -47,7 +47,4 @@ def concorrente():
         
     duracao = sum(tempo_lista)
     inser_por_seg = qtd_threads / duracao 
-    """print("Tempo total: ", duracao)  
-    print("\nSem semaforo: Número de inserções por segundos: ", inser_por_seg)"""
-
     return [duracao, inser_por_seg]
