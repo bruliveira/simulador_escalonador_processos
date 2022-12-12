@@ -10,16 +10,14 @@ if __name__=="__main__":
     print("Duração (seg): ", com_semaforo[0])
     print("Inserção por segundo: ", int(com_semaforo[1]))
 
-    print("\n\n-------------- SEQUENCIAL ----------------")
+    print("\n-------------- SEQUENCIAL ----------------")
     print("Duração (seg): ", sem_semaforo[0])
     print("Inserção por segundo: ", int(sem_semaforo[1]))
     print("------------------------------------------\n")
 
-    maior_qtd = sem_semaforo[1] - com_semaforo[1] #verificando qtd de inserções de cada método
-
-    if maior_qtd > 0: #caso tenha mais inserção no sequencial do que o concorrente
-        eficiencia = (maior_qtd/com_semaforo[1])*100 #variação percentual entre os valores
+    if sem_semaforo[1] >= com_semaforo[1] : #caso tenha mais inserção no sequencial do que o concorrente
+        eficiencia = (sem_semaforo[1] - com_semaforo[1] /com_semaforo[1])*100 #variação percentual entre os valores
         print("O modelo sequencial é {0:.2f}% mais eficiente que o concorrente.\n".format(eficiencia))
     else: #caso contrário
-        eficiencia = (maior_qtd * (-1) / sem_semaforo[1])*100
+        eficiencia = ((com_semaforo[1] - sem_semaforo[1]) / sem_semaforo[1])*100
         print("O modelo concorrente é {0:.2f}% mais eficiente que o sequencial.\n".format(eficiencia))
